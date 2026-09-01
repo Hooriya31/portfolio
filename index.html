@@ -40,6 +40,8 @@
     color: var(--parchment);
     font-family: 'IBM Plex Sans', sans-serif;
     line-height: 1.6;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   ::selection {
@@ -115,12 +117,14 @@
     padding: 96px 0 64px;
     position: relative;
     border-top: none;
+    overflow: hidden;
   }
 
   /*
     The gradient is deliberately oversized and fades completely
-    before reaching its visible boundary, preventing the old
-    "cut-off" appearance.
+    before reaching its visible boundary. .hero now clips it
+    (overflow: hidden above) so it can never create horizontal
+    overflow or show a hard edge on narrow viewports.
   */
   .hero::before {
     content: "";
@@ -732,10 +736,10 @@
     }
 
     .hero::before {
-      top: -160px;
-      right: -220px;
-      width: 470px;
-      height: 470px;
+      top: -150px;
+      right: -140px;
+      width: 380px;
+      height: 380px;
     }
 
     .eyebrow {
@@ -839,6 +843,13 @@
       font-size: 35px;
     }
 
+    .hero::before {
+      top: -130px;
+      right: -120px;
+      width: 320px;
+      height: 320px;
+    }
+
     .stats {
       grid-template-columns: 1fr 1fr;
     }
@@ -889,9 +900,9 @@
 
       <a href="#projects">Projects</a>
 
-      <a href="#skills">Skills</a>
-
       <a href="#certifications">Certifications</a>
+
+      <a href="#skills">Skills</a>
 
       <a href="#achievements">Achievements</a>
 
