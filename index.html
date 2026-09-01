@@ -114,36 +114,34 @@
   ========================= */
 
   .hero {
-    padding: 96px 0 64px;
     position: relative;
-    border-top: none;
-    overflow: hidden;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    padding: 96px 0 64px;
+
+    /*
+      The glow is the hero's own background, spanning the FULL browser
+      width via the full-bleed technique above — not just the centered
+      920px content column. Because there's no narrower box for it to
+      end at, it can never show a hard edge at any screen size.
+    */
+    background:
+      radial-gradient(
+        circle at top right,
+        rgba(217, 164, 65, 0.16) 0%,
+        rgba(217, 164, 65, 0.07) 25%,
+        rgba(217, 164, 65, 0) 55%
+      ),
+      var(--ink);
   }
 
-  /*
-    The gradient is deliberately oversized and fades completely
-    before reaching its visible boundary. .hero now clips it
-    (overflow: hidden above) so it can never create horizontal
-    overflow or show a hard edge on narrow viewports.
-  */
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: -210px;
-    right: -150px;
-    width: 560px;
-    height: 560px;
-
-    background: radial-gradient(
-      circle,
-      rgba(217, 164, 65, 0.14) 0%,
-      rgba(217, 164, 65, 0.09) 22%,
-      rgba(217, 164, 65, 0.04) 42%,
-      rgba(217, 164, 65, 0) 72%
-    );
-
-    pointer-events: none;
-    z-index: 0;
+  .hero-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
   }
 
   .hero > * {
@@ -735,13 +733,6 @@
       padding: 72px 0 52px;
     }
 
-    .hero::before {
-      top: -150px;
-      right: -140px;
-      width: 380px;
-      height: 380px;
-    }
-
     .eyebrow {
       font-size: 13px;
       line-height: 1.8;
@@ -843,13 +834,6 @@
       font-size: 35px;
     }
 
-    .hero::before {
-      top: -130px;
-      right: -120px;
-      width: 320px;
-      height: 320px;
-    }
-
     .stats {
       grid-template-columns: 1fr 1fr;
     }
@@ -923,6 +907,8 @@
 ========================= -->
 
 <section class="hero">
+
+  <div class="hero-inner">
 
   <div class="eyebrow">
 
@@ -1042,6 +1028,8 @@
       </div>
 
     </div>
+
+  </div>
 
   </div>
 
