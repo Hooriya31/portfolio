@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hooriya Ahmad — Software Engineering Student & Builder</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #12141b;
+    --surface: #1b1e28;
+    --surface-2: #21242f;
+    --parchment: #f2eee2;
+    --dim: #a19c8e;
+    --amber: #d9a441;
+    --amber-dim: #8a6b2e;
+    --rule: #2b2e3a;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html, body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--parchment);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: var(--amber);
+    color: var(--ink);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* NAV */
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(18, 20, 27, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+    color: var(--dim);
+  }
+
+  .nav-links a:hover {
+    color: var(--amber);
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  @media (max-width: 620px) {
+    .nav-links {
+      display: none;
+    }
+  }
+
+  /* HERO */
+
+  .hero {
+    padding: 96px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -180px;
+    right: -140px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(
+      circle,
+      rgba(217,164,65,0.14) 0%,
+      rgba(217,164,65,0) 70%
+    );
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-size: 14px;
+    color: var(--dim);
+    margin-bottom: 18px;
+  }
+
+  .eyebrow .dot {
+    color: var(--amber);
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 52px;
+    line-height: 1.08;
+    margin: 0 0 22px;
+    max-width: 13ch;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--amber);
+  }
+
+  .hero p.lede {
+    font-size: 17px;
+    color: var(--dim);
+    max-width: 56ch;
+    margin: 0 0 32px;
+  }
+
+  .hero p.lede strong {
+    color: var(--parchment);
+    font-weight: 500;
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .btn-primary {
+    background: var(--amber);
+    color: var(--ink);
+  }
+
+  .btn-primary:hover {
+    background: #e8b653;
+  }
+
+  .btn-outline {
+    border: 1px solid var(--rule);
+    color: var(--parchment);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--rule);
+    padding-top: 32px;
+  }
+
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 34px;
+    color: var(--amber);
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--dim);
+    margin-top: 4px;
+  }
+
+  @media (max-width: 620px) {
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 28px;
+    }
+
+    h1 {
+      font-size: 38px;
+    }
+  }
+
+  /* SECTION HEADERS */
+
+  section {
+    padding: 64px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .section-num {
+    font-size: 13px;
+    color: var(--amber-dim);
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 28px;
+    margin: 0 0 36px;
+  }
+
+  /* ABOUT */
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+  }
+
+  .about-grid p {
+    color: var(--dim);
+    font-size: 15.5px;
+    max-width: 56ch;
+  }
+
+  .about-grid p strong {
+    color: var(--parchment);
+    font-weight: 500;
+  }
+
+  .edu-item {
+    margin-bottom: 20px;
+  }
+
+  .edu-item .school {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    color: var(--parchment);
+  }
+
+  .edu-item .meta {
+    font-size: 13px;
+    color: var(--dim);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 700px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* SKILLS TAGS */
+
+  .skill-group {
+    margin-bottom: 22px;
+  }
+
+  .skill-group h4 {
+    font-size: 13px;
+    color: var(--dim);
+    font-weight: 500;
+    margin: 0 0 12px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--rule);
+    color: var(--parchment);
+    background: var(--surface);
+  }
+
+  /* PROJECTS */
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 700px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--amber-dim);
+    border-radius: 6px;
+    padding: 24px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .project-card:hover {
+    border-left-color: var(--amber);
+    transform: translateY(-2px);
+  }
+
+  .project-card .status {
+    font-size: 12px;
+    color: var(--amber);
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  .project-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0 0 10px;
+  }
+
+  .project-card p {
+    font-size: 14px;
+    color: var(--dim);
+    margin: 0 0 14px;
+  }
+
+  .project-card .link {
+    font-size: 13px;
+    color: var(--amber);
+    border-bottom: 1px solid var(--amber-dim);
+  }
+
+  .project-card .link:hover {
+    color: #e8b653;
+  }
+
+  /* EXPERIENCE */
+
+  .exp-item {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 24px;
+  }
+
+  .exp-item:last-child {
+    border-bottom: none;
+  }
+
+  .exp-date {
+    font-size: 13px;
+    color: var(--dim);
+    padding-top: 3px;
+  }
+
+  .exp-role {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: var(--parchment);
+    margin: 0 0 4px;
+  }
+
+  .exp-org {
+    font-size: 14px;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+
+  .exp-item ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  .exp-item li {
+    font-size: 14.5px;
+    color: var(--dim);
+    margin-bottom: 6px;
+  }
+
+  /* CSES PROMOTION TIMELINE */
+
+  .role-history {
+    border-left: 1px solid var(--rule);
+    margin-left: 2px;
+    padding-left: 22px;
+  }
+
+  .role-entry {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .role-entry:last-child {
+    margin-bottom: 0;
+  }
+
+  .role-entry::before {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: var(--amber);
+    border-radius: 50%;
+    left: -27px;
+    top: 8px;
+  }
+
+  .role-title {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    color: var(--parchment);
+    margin-bottom: 2px;
+  }
+
+  .role-date {
+    font-size: 12px;
+    color: var(--dim);
+    margin-bottom: 7px;
+  }
+
+  .role-entry p {
+    font-size: 14px;
+    color: var(--dim);
+    margin: 0;
+  }
+
+  @media (max-width: 620px) {
+    .exp-item {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+  }
+
+  /* CERTS */
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 700px) {
+    .cert-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .cert-item {
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+  }
+
+  .cert-item .cert-title {
+    font-size: 15px;
+    color: var(--parchment);
+    font-weight: 500;
+  }
+
+  .cert-item .cert-meta {
+    font-size: 13px;
+    color: var(--dim);
+    margin-top: 4px;
+  }
+
+  /* ACHIEVEMENTS */
+
+  .achieve-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .achieve-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+    color: var(--dim);
+    display: flex;
+    gap: 14px;
+  }
+
+  .achieve-list li:last-child {
+    border-bottom: none;
+  }
+
+  .achieve-list li::before {
+    content: "—";
+    color: var(--amber);
+    flex-shrink: 0;
+  }
+
+  /* CONTACT / FOOTER */
+
+  .contact-block {
+    text-align: left;
+    padding: 72px 0 48px;
+  }
+
+  .contact-block h2 {
+    font-size: 34px;
+    margin-bottom: 16px;
+  }
+
+  .contact-block p {
+    color: var(--dim);
+    font-size: 16px;
+    max-width: 50ch;
+    margin-bottom: 32px;
+  }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 28px 0 48px;
+    font-size: 13px;
+    color: var(--dim);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer a:hover {
+    color: var(--amber);
+  }
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-name">Hooriya Ahmad</div>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+
+  <section class="hero" style="border-top:none;">
+
+    <div class="eyebrow">
+      BS Software Engineering
+      <span class="dot">·</span>
+      COMSATS University Islamabad
+      <span class="dot">·</span>
+      Open to opportunities
+    </div>
+
+    <h1>
+      Builder, communicator, and <em>connector.</em>
+    </h1>
+
+    <p class="lede">
+  I'm a Software Engineering student who moves easily between code and people,
+  currently a <strong>Frontend AI Engineering Intern at FlyRank AI</strong>,
+  <strong>General Secretary of the COMSATS Software Engineering Society</strong>,
+  and a learner in <strong>McKinsey.org's Forward program</strong>.
+  I build tools that solve problems I actually have, and I've spent the past year
+  growing through leadership roles in a 100+ member student society, from PR Lead
+  to General Secretary.
+</p>
+
+    <div class="btn-row">
+      <a class="btn btn-primary" href="mailto:hooriyaahmad31@gmail.com">
+        Get in Touch
+      </a>
+
+      <a
+        class="btn btn-outline"
+        href="https://www.linkedin.com/in/hooriya-ahmad-ha31"
+        target="_blank"
+        rel="noopener"
+      >
+        LinkedIn ↗
+      </a>
+
+      <a
+        class="btn btn-outline"
+        href="https://github.com/Hooriya31"
+        target="_blank"
+        rel="noopener"
+      >
+        GitHub ↗
+      </a>
+    </div>
+
+    <div class="stats">
+
+      <div>
+        <div class="stat-num" data-target="6">0</div>
+        <div class="stat-label">Projects Built</div>
+      </div>
+
+      <div>
+        <div class="stat-num" data-target="100" data-suffix="+">0</div>
+        <div class="stat-label">Students Reached (PR)</div>
+      </div>
+
+      <div>
+        <div class="stat-num" data-target="6">0</div>
+        <div class="stat-label">Certifications & Programs</div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="section-num">01</div>
+    <h2>About</h2>
+
+    <div class="about-grid">
+
+      <div>
+
+        <p>
+          I'm a second-year Software Engineering student at COMSATS University
+          Islamabad with hands-on outreach and communication experience as
+          <strong>PR Lead</strong> and now <strong>General Secretary</strong>
+          of a 100+ member student society. I'm a confident communicator with
+          a proven ability to pitch, engage, and persuade — currently applying
+          that alongside frontend and applied-AI skills as an intern at FlyRank AI.
+        </p>
+
+        <p style="margin-top:16px;">
+          Outside of coursework, I build small tools that fix problems I run into
+          myself — a deadline tracker, a context-recovery tool for when I lose my
+          train of thought mid-project, and a scholarship matcher for students back home.
+        </p>
+
+      </div>
+
+      <div>
+
+        <div class="edu-item">
+          <div class="school">BS Software Engineering</div>
+          <div class="meta">
+            COMSATS University Islamabad · Sept 2025 – Present
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <div class="school">
+            ICS — Silver Oaks College of Leadership
+          </div>
+          <div class="meta">
+            2025 · Grade: A1 (Federal Board)
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <div class="school">
+            Matric (Science) — Silver Oaks International School
+          </div>
+          <div class="meta">
+            2023 · Grade: A1 (Federal Board)
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXPERIENCE -->
+
+  <section id="experience">
+
+    <div class="section-num">02</div>
+    <h2>Experience</h2>
+
+
+    <!-- FLYRANK — FIRST -->
+
+    <div class="exp-item">
+
+      <div class="exp-date">
+        Jul 2026 – Present
+      </div>
+
+      <div>
+
+        <div class="exp-role">
+          Frontend AI Engineering Intern
+        </div>
+
+        <div class="exp-org">
+          FlyRank AI
+        </div>
+
+        <ul>
+          <li>
+            Building frontend features while completing a structured AI fluency
+            curriculum, applied prompting, workflow design, and AI-assisted development.
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <!-- CSES — COMBINED PROMOTION HISTORY -->
+
+    <div class="exp-item">
+
+      <div class="exp-date">
+        Sep 2025 – Present
+      </div>
+
+      <div>
+
+        <div class="exp-role">
+          COMSATS Software Engineering Society
+        </div>
+
+        <div class="exp-org">
+          Leadership & Progression
+        </div>
+
+        <div class="role-history">
+
+          <div class="role-entry">
+
+            <div class="role-title">
+              General Secretary
+            </div>
+
+            <div class="role-date">
+              September 2026 – Present
+            </div>
+
+            <p>
+              Leading the planning, coordination, and execution of society-wide
+              events as part of the CORE team. Overseeing cross-team coordination,
+              decision-making, and event operations for the 100+ member society.
+            </p>
+
+          </div>
+
+
+          <div class="role-entry">
+
+            <div class="role-title">
+              Joint Secretary
+            </div>
+
+            <div class="role-date">
+              January 2026 – September 2026
+            </div>
+
+            <p>
+              Assisted in planning and executing society events, managing internal
+              coordination across teams, and supporting decision-making and
+              administrative operations.
+            </p>
+
+          </div>
+
+
+          <div class="role-entry">
+
+            <div class="role-title">
+              PR Lead
+            </div>
+
+            <div class="role-date">
+              September 2025 – January 2026
+            </div>
+
+            <p>
+              Led outreach campaigns promoting society events to 100+ students,
+              pitched society initiatives, developed engagement strategies,
+              managed event promotion, and coordinated event logistics.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="section-num">03</div>
+    <h2>Projects</h2>
+
+    <div class="project-grid">
+
+
+      <!-- CONTINUUM -->
+
+      <div class="project-card">
+
+        <span class="status">
+          In Progress
+        </span>
+
+        <h3>
+          Continuum
+        </h3>
+
+        <p>
+          A tool for people who lose their train of thought after a break —
+          describe what you're working on before you stop, and get a progress
+          report when you return so you can pick back up without re-orienting
+          from scratch.
+        </p>
+
+      </div>
+
+
+      <!-- STRIDE -->
+
+      <div class="project-card">
+
+        <span class="status">
+          In Progress
+        </span>
+
+        <h3>
+          Stride
+        </h3>
+
+        <p>
+          A scholarship and opportunity matcher for Pakistani students —
+          paste your profile and it matches local and international scholarships,
+          internships, and competitions, explains why you qualify, and drafts
+          the first line of your application.
+        </p>
+
+      </div>
+
+
+      <!-- CAMPUS CARE -->
+
+      <div class="project-card">
+
+        <span class="status">
+          2026
+        </span>
+
+        <h3>
+          Campus Care System
+        </h3>
+
+        <p>
+          Desktop academic management app with student login, planner,
+          quiz module, and flashcard system. Java, OOP, Java Swing.
+        </p>
+
+        <a
+          class="link"
+          href="https://github.com/Hooriya31/campus-care-system"
+          target="_blank"
+          rel="noopener"
+        >
+          github.com/Hooriya31/campus-care-system ↗
+        </a>
+
+      </div>
+
+
+      <!-- SUPERMARKET -->
+
+      <div class="project-card">
+
+        <span class="status">
+          2026
+        </span>
+
+        <h3>
+          Supermarket Management System
+        </h3>
+
+        <p>
+          Console-based inventory and sales system with role-based
+          authentication and real-time stock tracking. Java.
+        </p>
+
+        <a
+          class="link"
+          href="https://github.com/Hooriya31/supermarket-management-system"
+          target="_blank"
+          rel="noopener"
+        >
+          github.com/Hooriya31/supermarket-management-system ↗
+        </a>
+
+      </div>
+
+
+      <!-- ABAYA -->
+
+      <div class="project-card">
+
+        <span class="status">
+          2025
+        </span>
+
+        <h3>
+          Abaya Collection Website
+        </h3>
+
+        <p>
+          Frontend e-commerce site with working cart, wishlist, live search,
+          and price filters — no frameworks used. HTML, CSS, JavaScript.
+        </p>
+
+        <a
+          class="link"
+          href="https://github.com/Hooriya31/abaya-collection-website"
+          target="_blank"
+          rel="noopener"
+        >
+          github.com/Hooriya31/abaya-collection-website ↗
+        </a>
+
+      </div>
+
+
+      <!-- BUILDBASH -->
+
+      <div class="project-card">
+
+        <span class="status">
+          2026
+        </span>
+
+        <h3>
+          BuildBash — AERA
+        </h3>
+
+        <p>
+          Collaborative 2-day BuildBash project where our team designed
+          AERA, a fictional country built around the idea of a world
+          without borders. Contributed to the country's visual identity,
+          presentation design, and overall creative direction.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CERTIFICATIONS -->
+
+  <section id="certifications">
+
+    <div class="section-num">04</div>
+    <h2>Certifications & Programs</h2>
+
+    <div class="cert-grid">
+
+
+      <!-- 1 -->
+
+      <div class="cert-item">
+
+        <div class="cert-title">
+          MERN Stack Development
+        </div>
+
+        <div class="cert-meta">
+          Professional Freelancing Training Program (PFTP) · Jul – Oct 2024<br>
+          Final project: iCinema, a full-stack movie booking platform
+        </div>
+
+      </div>
+
+
+      <!-- 2 -->
+
+      <div class="cert-item">
+
+        <div class="cert-title">
+          McKinsey.org Forward Program
+        </div>
+
+        <div class="cert-meta">
+          Accepted as a learner · 2026
+        </div>
+
+      </div>
+
+
+      <!-- 3 -->
+
+      <div class="cert-item">
+
+        <div class="cert-title">
+          Anthropic AI Fluency
+        </div>
+
+        <div class="cert-meta">
+          Anthropic Education · 2026<br>
+          AI fluency, prompting, workflow design, and effective AI collaboration
+        </div>
+
+      </div>
+
+
+      <!-- 4 -->
+
+      <div class="cert-item">
+
+        <div class="cert-title">
+          Claude 101
+        </div>
+
+        <div class="cert-meta">
+          Anthropic · 2026<br>
+          Introduction to using Claude effectively for research, writing,
+          problem-solving, and AI-assisted workflows
+        </div>
+
+      </div>
+
+
+      <!-- 5 -->
+
+      <div class="cert-item">
+
+        <div class="cert-title">
+          Goldman Sachs Risk Job Simulation
+        </div>
+
+        <div class="cert-meta">
+          Forage · May 2026<br>
+          Credit risk analysis and real estate risk assessment using financial data
+        </div>
+
+      </div>
+
+
+      <!-- 6 -->
+
+      <div class="cert-item">
+
+        <div class="cert-title">
+          Goldman Sachs Internal Audit Job Simulation
+        </div>
+
+        <div class="cert-meta">
+          Forage · May 2026<br>
+          AML compliance gaps and internal control audits for Global Banking & Markets
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <div class="section-num">05</div>
+    <h2>Skills</h2>
+
+
+    <div class="skill-group">
+
+      <h4>
+        Languages (CS)
+      </h4>
+
+      <div class="tags">
+        <span class="tag">Java</span>
+        <span class="tag">C++</span>
+        <span class="tag">Python</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+      </div>
+
+    </div>
+
+
+    <div class="skill-group">
+
+      <h4>
+        Tools
+      </h4>
+
+      <div class="tags">
+        <span class="tag">Git</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">VS Code</span>
+        <span class="tag">NetBeans</span>
+        <span class="tag">MS Office</span>
+      </div>
+
+    </div>
+
+
+    <div class="skill-group">
+
+      <h4>
+        Soft Skills
+      </h4>
+
+      <div class="tags">
+        <span class="tag">Leadership</span>
+        <span class="tag">Public Speaking</span>
+        <span class="tag">PR</span>
+        <span class="tag">Event Management</span>
+        <span class="tag">Technical & Business Writing</span>
+        <span class="tag">Cold Calling</span>
+        <span class="tag">Lead Qualification</span>
+        <span class="tag">Outbound Outreach</span>
+      </div>
+
+    </div>
+
+
+    <div class="skill-group">
+
+      <h4>
+        Spoken Languages
+      </h4>
+
+      <div class="tags">
+        <span class="tag">English (Professional)</span>
+        <span class="tag">Urdu (Native)</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ACHIEVEMENTS -->
+
+  <section id="achievements">
+
+    <div class="section-num">06</div>
+    <h2>Achievements & Activities</h2>
+
+    <ul class="achieve-list">
+
+      <li>
+        Won multiple inter-school speech and debate competitions
+      </li>
+
+      <li>
+        Merit scholarship recipient at Silver Oaks College during ICS
+      </li>
+
+      <li>
+        Volunteer, IEEE COMSATS
+      </li>
+
+      <li>
+        Design & Visual Identity contributor, BuildBash 2026
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section
+    class="contact-block"
+    id="contact"
+    style="border-top: 1px solid var(--rule);"
+  >
+
+    <h2>
+      Let's build
+      <em style="color:var(--amber); font-style:italic;">
+        something.
+      </em>
+    </h2>
+
+    <p>
+      Whether it's a role, a collaboration, or just a conversation —
+      I'm always open to it.
+    </p>
+
+    <div class="btn-row" style="margin-bottom:0;">
+
+      <a
+        class="btn btn-primary"
+        href="mailto:hooriyaahmad31@gmail.com"
+      >
+        hooriyaahmad31@gmail.com
+      </a>
+
+      <a
+        class="btn btn-outline"
+        href="https://www.linkedin.com/in/hooriya-ahmad-ha31"
+        target="_blank"
+        rel="noopener"
+      >
+        LinkedIn ↗
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <span>
+      © 2026 Hooriya Ahmad
+    </span>
+
+    <span>
+      Rawalpindi, Pakistan
+    </span>
+
+  </footer>
+
+</div>
+
+
+<script>
+
+  const counters = document.querySelectorAll('.stat-num');
+
+  const animate = (el) => {
+
+    const target = parseFloat(el.dataset.target);
+    const decimal = el.dataset.decimal === 'true';
+    const suffix = el.dataset.suffix || '';
+
+    const duration = 1200;
+    const start = performance.now();
+
+    const step = (now) => {
+
+      const progress =
+        Math.min((now - start) / duration, 1);
+
+      const eased =
+        1 - Math.pow(1 - progress, 3);
+
+      const value =
+        target * eased;
+
+      el.textContent =
+        (decimal
+          ? value.toFixed(2)
+          : Math.floor(value)
+        ) + suffix;
+
+      if (progress < 1) {
+
+        requestAnimationFrame(step);
+
+      } else {
+
+        el.textContent =
+          (decimal
+            ? target.toFixed(2)
+            : target
+          ) + suffix;
+
+      }
+
+    };
+
+    requestAnimationFrame(step);
+
+  };
+
+
+  const observer =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            animate(entry.target);
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+      { threshold: 0.5 }
+    );
+
+
+  counters.forEach(c => observer.observe(c));
+
+</script>
+
+</body>
+</html>
